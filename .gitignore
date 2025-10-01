@@ -1,0 +1,25 @@
+# ROS build files
+build/
+install/
+devel/
+log/
+
+# ROS generated files
+CATKIN_IGNORE
+ros_env.sh
+*.rosinstall
+*.rosinstall.bak
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Other
+*.bak

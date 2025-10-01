@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- TR200 센서 기반 안전 제어 시스템 런치 파일 (SDK 전용) -->
+    
+    <!-- 로봇 연결 파라미터 -->
+    <arg name="robot_ip" default="169.254.128.2" />
+    <arg name="robot_port" default="5480" />
+    
+    <!-- 센서 설정 파라미터 -->
+    <arg name="min_obstacle_distance" default="0.5" />
+    <arg name="warning_distance" default="0.8" />
+    <arg name="safe_distance" default="1.0" />
+    
+    <!-- 제어 설정 파라미터 -->
+    <arg name="normal_speed" default="0.2" />
+    <arg name="slow_speed" default="0.1" />
+    <arg name="stop_speed" default="0.0" />
+    <arg name="control_frequency" default="20.0" />
+    
+    <!-- TR200 센서 안전 제어 노드 (SDK 전용) -->
+    <node 
+        name="tr200_sensor_safety_controller" 
+        pkg="tr200_simple_control" 
+        type="sensor_based_safety_controller.py" 
+        output="screen"
+        respawn="true"
+        respawn_delay="5">
+        
+        <!-- 런치 파일 인자로 오버라이드 가능한 파라미터들 -->
+        <param name="robot_ip" value="$(arg robot_ip)" />
+        <param name="robot_port" value="$(arg robot_port)" />
+        <param name="min_obstacle_distance" value="$(arg min_obstacle_distance)" />
+        <param name="warning_distance" value="$(arg warning_distance)" />
+        <param name="normal_speed" value="$(arg normal_speed)" />
+        <param name="slow_speed" value="$(arg slow_speed)" />
+    </node>
+    
+</launch>
